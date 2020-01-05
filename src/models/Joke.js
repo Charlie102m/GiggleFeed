@@ -9,7 +9,18 @@ const JokeSchema = new mongoose.Schema({
     "nsfw": Boolean,
     "religious": Boolean,
     "political": Boolean,
-    "id": Number
+    "id": {
+        type: Number,
+        unique: true
+    },
+    "upvotes": {
+        type: Number,
+        default: 0
+    },
+    "upvotes": {
+        type: Number,
+        default: 0
+    }
 })
 
 module.exports = mongoose.model('Joke', JokeSchema)
