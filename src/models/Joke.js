@@ -17,7 +17,7 @@ const JokeSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    "upvotes": {
+    "downvotes": {
         type: Number,
         default: 0
     }
