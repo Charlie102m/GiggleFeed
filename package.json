@@ -1,0 +1,31 @@
+{
+  "name": "gigglefeed",
+  "version": "1.0.0",
+  "description": "Social media with a bit more humour!",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node src/server",
+    "serve": "NODE_ENV=development nodemon src/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Charlie102m/GiggleFeed.git"
+  },
+  "author": "Charlie McCabe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Charlie102m/GiggleFeed/issues"
+  },
+  "homepage": "https://github.com/Charlie102m/GiggleFeed#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.4"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2"
+  }
+}
