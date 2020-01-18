@@ -1,15 +1,30 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
+const Joke = require("../models/Joke");
 
-const { loadJokes } = require('../controllers/JokeController.js')
+const {
+  bulkInsert,
+  loadJokes,
+  findJoke,
+  createJoke,
+  updateJoke,
+  deleteJoke
+} = require("../controllers/JokeController.js");
 
-router.route('/')
-    .get(loadJokes)
-    .post()
+const { Protect } = require("../middleware/auth");
+const advancedResults = require("../middleware/advancedResults");
 
-router.route('/:jokeId')
-    .get()
-    .put()
-    .delete()
+router.route("/bulkinsert/now").post(Protect, bulkInsert);
+
+router
+  .route("/")
+  .get(advancedResults(Joke, "upVotes downVotes"), loadJokes)
+  .post(Protect, createJoke);
+
+router
+  .route("/:jokeId")
+  .get(findJoke)
+  .put(Protect, updateJoke)
+  .delete(Protect, deleteJoke);
 
 module.exports = router;
