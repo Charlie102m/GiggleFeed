@@ -15,8 +15,19 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json())
 connectDb()
 
+// routers
+const AuthRouter = require('./routes/AuthRoutes.js')
+const JokeRouter = require('./routes/JokeRoutes.js')
+
+app.use('/api/auth', AuthRouter)
+app.use('/api/joke', JokeRouter)
+
+// error handler
+const errorHandler = require('./middleware/error.js')
+app.use(errorHandler)
+
 // seeder
-const { seedDB } = require('./utils/seeder.js')
-setInterval(() => { seedDB() }, 5000);
+// const { seedDB } = require('./utils/seeder.js')
+// setInterval(() => { seedDB() }, 2500);
 
 app.listen(process.env.PORT || 5000, () => console.log(`SERVER RUNNING ON PORT : ${process.env.PORT || 5000}`.bold.yellow))
