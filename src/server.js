@@ -42,6 +42,15 @@ app.use("/api/vote", VoteRouter);
 const errorHandler = require("./middleware/error.js");
 app.use(errorHandler);
 
+// STAY AWAKE
+var axios = require("axios");
+setInterval(() => {
+  axios
+    .get("http://gigglefeed.com")
+    .then(() => console.log("KEEP ALIVE : PINGED"))
+    .catch(error => console.log("KEEP ALIVE : FAILED", error));
+}, 300000);
+
 // SERVER
 app.listen(process.env.PORT || 5000, () =>
   console.log(
